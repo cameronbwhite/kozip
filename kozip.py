@@ -23,10 +23,11 @@ def unzip(file, dir, lang):
 
     zfobj = zipfile.ZipFile(file)
     for info in zfobj.infolist():
-        info.filename =  info.filename.decode(lang).encode('utf-8')
+        #info.filename =  info.filename.decode(lang).encode('utf-8')
         zfobj.extract(info, dir)
+        printing="extracting"
 
-        print 'extracting', info.filename
+        print(printing+info.filename)
 
 if __name__ == '__main__':
     argc = len(sys.argv)
