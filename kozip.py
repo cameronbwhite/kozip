@@ -2,6 +2,15 @@
 # -*- coding: utf-8 -*-
 # this script supports shift-jis and euc-kr encodings (basically, Microsoft's Korean and Japanese encoding.)
 
+# reference:    
+
+    #if sys.version_info < (3, 0):
+        
+        #info.filename =  bytes(info.filename,lang).encode('utf-8')
+    #else:
+        #info.filename =  info.filename.decode(lang).encode('utf-8')
+# that bit of code was given to me by slaveriq on the jupiter broadcasting irc. I'll make tha the base of the future rewrite.
+
 import sys, os, zipfile
 
 def unzip(file, dir, lang):
@@ -24,8 +33,9 @@ def unzip(file, dir, lang):
     zfobj = zipfile.ZipFile(file)
     for info in zfobj.infolist():
         #info.filename =  info.filename.decode(lang).encode('utf-8')
+        
         zfobj.extract(info, dir)
-        printing="extracting"
+        printing="extracting "
 
         print(printing+info.filename)
 
